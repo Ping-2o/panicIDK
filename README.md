@@ -1,4 +1,4 @@
-# panicIDK — an app-reachable kernel panic in AppleAVE2 (iOS 27.0 / 27.0.1)
+# panicIDK — an app-reachable kernel panic in AppleAVE2 (iOS 27.0)
 
 > **AI-GENERATED SECURITY RESEARCH — authorized research on the owner's own devices, aimed at
 > coordinated disclosure to Apple.** This is a **crash oracle** (device-wide denial of service)
@@ -52,7 +52,6 @@ task:  videocodecd (com.apple.coremedia.videocodecd.compressionsession)
 | OS | Build | Status |
 |---|---|---|
 | iOS 27.0 RC | 24A435 (iPhone17,5 verified) | **VULNERABLE — panic reproduced** |
-| iOS 27.0 GM / 27.0.1 | 24A437 / 24A446 (security-equivalent to 24A435) | presumed vulnerable (byte-equivalent kext) |
 | iOS 27.2 (24B115) | AppleAVE2 913.64.1 | **unverified** — the 27.2 fix train bounds the VPS count family and adds a plugin-side `NumberOfTemporalLayers <= 7` setter bound, but the kext-composed loop bound described here is not in that fix list; testing pending |
 
 Verified on: iPhone 16e (iPhone17,5), AppleAVE2 913.43.1, HEVC hardware encode sessions.
@@ -71,8 +70,3 @@ Expected device behavior: the program prints the property/prepare/encode receipt
 panics the kernel at session teardown (the device reboots and produces the `.ips` above).
 If it prints `still alive?`, the kext does not match the vulnerable 913.43 shape.
 
-## Disclosure status
-
-Being prepared for coordinated disclosure to Apple. The underlying primitive (a linear
-kernel-heap overwrite with a small controlled value and a fixed, deterministic extent) is
-documented separately; this repository deliberately contains only the crash oracle.
