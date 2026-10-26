@@ -1,5 +1,5 @@
 /*
- * panicIDK.c — app-reachable kernel panic PoC for AppleAVE2 (iOS 27.0 / 27.0.1)
+ * panicIDK.c — app-reachable kernel panic PoC for AppleAVE2 (iOS 27.0)
  *
  * Two ordinary VTCompressionSession properties arm a kernel-side reference-count
  * fill loop in AppleAVE2 913.43. The loop's bound is composed by the kext (NOT the
